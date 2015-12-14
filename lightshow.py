@@ -57,41 +57,29 @@ outpins[6] = 22
 # Create an instance of the Show class
 myShow = Show(outpins)
 
-# Load the song
-JTTW = joy_to_the_world()
-JB = jingle_bells()
-DTH = deck_the_halls()
-OCOME = o_come_all_ye_faithful()
-NOEL = the_first_noel()
-TEST_SONG = test_song()
-
+# Load the songs
+playlist = [ [] for i in range(5)]
+playlist[0] = joy_to_the_world()
+playlist[1] = jingle_bells()
+playlist[2] = deck_the_halls()
+playlist[3] = o_come_all_ye_faithful()
+playlist[4] = the_first_noel()
 
 # Start the loop to play the songs
 while(True):
 #    play_song(myShow, TEST_SONG)
 
     # Start with the chase program
-    for i in range(3):
-        play_song(myShow, OCOME)
-        #chase(myShow, outpins)
+    for i in range(2):
+        chase(myShow, outpins)
 
-    for i in range(5):
-        # Start a new song
-        play_song(myShow, JTTW)
+    # Run the playlist 
+    for i in range(len(playlist)):
+        # Play the song
+        play_song(myShow, playlist[i])
+
         # Run the finale program
         myShow.finale(outpins, 5, 0.5)
-
-        # Start a new song
-        play_song(myShow, JB)
-        # Run the finale program
-        myShow.finale(outpins, 5, 0.5)
-
-
-        # Start a new song
-        play_song(myShow, DTH)
-        # Run the finale program
-        myShow.finale(outpins, 5, 0.5)
-
 
     # Turn everything off
     myShow.all_off(outpins)
