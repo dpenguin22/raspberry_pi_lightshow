@@ -4,6 +4,8 @@ from jingle_bells import *
 from deck_the_halls import *
 from o_come_all_ye_faithful import *
 from the_first_noel import *
+from carol_of_the_bells import *
+from hark_the_herald_angels_sing import *
 from test_song import *
 from chase import *
 from lightshow_classes import Show, Song
@@ -64,6 +66,8 @@ playlist[1] = jingle_bells()
 playlist[2] = deck_the_halls()
 playlist[3] = o_come_all_ye_faithful()
 playlist[4] = the_first_noel()
+playlist[5] = carol_of_the_bells()
+playlist[6] = hark_the_herald_angels_sing()
 
 # Start the loop to play the songs
 while(True):
@@ -75,6 +79,10 @@ while(True):
 
     # Run the playlist 
     for i in range(len(playlist)):
+        # Indicate which song in the playlist is being run
+        for j in range(i):
+            myShow_turn_on(outpins[j])
+        myShow.all_off(outpins)
         # Play the song
         play_song(myShow, playlist[i])
 
