@@ -3,7 +3,7 @@ from lightshow_classes import Song
 
 def we_wish_you_a_merry_christmas():
 
-    wish = Song(140)
+    wish = Song(130)
 
 
     wish.notes.append([wish.d, wish.quarter])

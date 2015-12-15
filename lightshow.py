@@ -6,10 +6,15 @@ from o_come_all_ye_faithful import *
 from the_first_noel import *
 from carol_of_the_bells import *
 from hark_the_herald_angels_sing import *
+from silent_night import *
+from we_wish_you_a_merry_christmas import *
 from test_song import *
 from chase import *
 from lightshow_classes import Show, Song
 import RPi.GPIO as GPIO
+
+# Define global variables
+DEBUG = 0
 
 def play_song(myShow, mySong):
 
@@ -20,7 +25,8 @@ def play_song(myShow, mySong):
     for item in range(mySong.size):
     
         note = mySong.notes[item][0]
-        print 'New Note: ' + str(note) + '  ' + str(mySong.notes[item][1] * mySong.onebeat)
+        if DEBUG:
+            print 'New Note: ' + str(note) + '  ' + str(mySong.notes[item][1] * mySong.onebeat)
 
         if item > 0 and note == prev_note:
             # If this note is the same as the previous, turn
@@ -60,7 +66,7 @@ outpins[6] = 22
 myShow = Show(outpins)
 
 # Load the songs
-playlist = [ [] for i in range(7)]
+playlist = [ [] for i in range(9)]
 playlist[0] = joy_to_the_world()
 playlist[1] = jingle_bells()
 playlist[2] = deck_the_halls()
@@ -68,6 +74,8 @@ playlist[3] = o_come_all_ye_faithful()
 playlist[4] = the_first_noel()
 playlist[5] = carol_of_the_bells()
 playlist[6] = hark_the_herald_angels_sing()
+playlist[7] = silent_night()
+playlist[8] = we_wish_you_a_merry_christmas()
 
 # Start the loop to play the songs
 while(True):
@@ -75,14 +83,21 @@ while(True):
 
     # Start with the chase program
     for i in range(2):
-        chase(myShow, outpins)
+#        chase(myShow, outpins)
 
     # Run the playlist 
     for i in range(len(playlist)):
         # Indicate which song in the playlist is being run
-        for j in range(i):
-            print j
-            myShow.turn_on(outpins[j])
+        if i <= len(outpins):
+            for j in range(i):
+                myShow.turn_on(outpins[j])
+                print str(i) + " " + str(j) + " " + str(outpins[j])
+        else:
+            for j in range(i-npins):
+                print "In else " + str(i) + " " + str(j) + " " + str(outpins[npins-j-1])
+                myShow.turn_on(outpins[npins-j-1])
+            
+                
         time.sleep(1)
         myShow.all_off(outpins)
         time.sleep(1)

@@ -3,7 +3,7 @@ from lightshow_classes import Song
 
 def silent_night():
 
-    silent = Song(140)
+    silent = Song(100)
 
 
     silent.notes.append([silent.g, silent.quarter*1.5])
