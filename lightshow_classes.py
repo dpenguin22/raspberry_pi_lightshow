@@ -36,7 +36,7 @@ class Show:
             time.sleep(interval)
             self.all_on(outpins)
             time.sleep(interval)
-
+    
     def finale(self, outpins, duration, interval):
         # Twinkle the lights for 5 seconds
         self.twinkle(outpins, 5, 0.5)
@@ -48,6 +48,40 @@ class Show:
         # Turn everything off for 2 seconds
         self.all_off(outpins)
         time.sleep(2)
+
+    def play_song(self, outpins, mySong):
+        prev_note = 0
+
+        # Start with everything off        
+        self.all_off(outpins)
+
+        # Loop through each note
+        for item in range(mySong.size):
+            note = mySong.notes[item][0]
+
+#            if DEBUG:
+#                print 'New Note: ' + str(note) + ' ' + str(mySong.notes[item][1] * mySong.onebeat)
+
+            if item > 0 and note == prev_note:
+                # If this note is the same as the last, turn off
+                # the note for a fraction of a beat
+                self.turn_off(outpins[note])
+                time.sleep(mySong.minbeat)
+            prev_note = note
+
+            # Turn on the current note
+            self.turn_on(outpins[note])
+
+            # Turn off the other notes
+            for j in range(len(outpins)):
+                if j != note:
+                    self.turn_off(outpins[j])
+            # Hold the note for the desired amount of time
+            holdtime = mySong.notes[item][1] * mySong.onebeat
+            if holdtime >= mySong.minbeat:
+                time.sleep(holdtime)
+            else: 
+                time.sleep(mySong.minbeat)
 
 
 class Song(object):

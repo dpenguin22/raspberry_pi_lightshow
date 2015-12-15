@@ -16,41 +16,6 @@ import RPi.GPIO as GPIO
 # Define global variables
 DEBUG = 0
 
-def play_song(myShow, mySong):
-
-    prev_note = 0
-
-    myShow.all_off(outpins)
-
-    for item in range(mySong.size):
-    
-        note = mySong.notes[item][0]
-        if DEBUG:
-            print 'New Note: ' + str(note) + '  ' + str(mySong.notes[item][1] * mySong.onebeat)
-
-        if item > 0 and note == prev_note:
-            # If this note is the same as the previous, turn
-            # off all outputs for a fraction of a beat
-            myShow.all_off(outpins)
-            time.sleep(mySong.minbeat)
-        prev_note = note
-
-        # Turn on the current note
-        myShow.turn_on(outpins[note])
-
-        # Turn off the other notes
-        for j in range(npins):
-            if j != note:
-                myShow.turn_off(outpins[j])
-
-        # Hold the note for the desired amount of time
-        holdtime = mySong.notes[item][1] * mySong.onebeat
-	if holdtime >= mySong.minbeat: 
-            time.sleep(holdtime)
-        else:
-            time.sleep(mySong.minbeat)
-
-
 # Define the Pi output pins
 npins = 7
 outpins = [ [] for i in range(npins)]
@@ -83,7 +48,7 @@ while(True):
 
     # Start with the chase program
     for i in range(2):
-#        chase(myShow, outpins)
+        chase(myShow, outpins)
 
     # Run the playlist 
     for i in range(len(playlist)):
@@ -91,23 +56,22 @@ while(True):
         if i <= len(outpins):
             for j in range(i):
                 myShow.turn_on(outpins[j])
-                print str(i) + " " + str(j) + " " + str(outpins[j])
         else:
             for j in range(i-npins):
-                print "In else " + str(i) + " " + str(j) + " " + str(outpins[npins-j-1])
                 myShow.turn_on(outpins[npins-j-1])
             
-                
         time.sleep(1)
         myShow.all_off(outpins)
         time.sleep(1)
+
         # Play the song
-        play_song(myShow, playlist[i])
+        #play_song(myShow, playlist[i])
+        myShow.play_song(outpins, playlist[i])
 
         # Run the finale program
         myShow.finale(outpins, 5, 0.5)
 
     # Turn everything off
     myShow.all_off(outpins)
-    time.sleep(20)
+    time.sleep(10)
 
