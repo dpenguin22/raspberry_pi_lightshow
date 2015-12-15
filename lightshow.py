@@ -60,7 +60,7 @@ outpins[6] = 22
 myShow = Show(outpins)
 
 # Load the songs
-playlist = [ [] for i in range(5)]
+playlist = [ [] for i in range(7)]
 playlist[0] = joy_to_the_world()
 playlist[1] = jingle_bells()
 playlist[2] = deck_the_halls()
@@ -81,8 +81,11 @@ while(True):
     for i in range(len(playlist)):
         # Indicate which song in the playlist is being run
         for j in range(i):
-            myShow_turn_on(outpins[j])
+            print j
+            myShow.turn_on(outpins[j])
+        time.sleep(1)
         myShow.all_off(outpins)
+        time.sleep(1)
         # Play the song
         play_song(myShow, playlist[i])
 

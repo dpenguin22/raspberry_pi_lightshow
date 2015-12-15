@@ -3,7 +3,7 @@ from lightshow_classes import Song
 
 def hark_the_herald_angels_sing():
 
-    hark = Song(160)
+    hark = Song(140)
 
 
     hark.notes.append([hark.g, hark.quarter])

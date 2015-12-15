@@ -3,7 +3,7 @@ from lightshow_classes import Song
 
 def carol_of_the_bells():
 
-    carol = Song(160)
+    carol = Song(140)
 
     carol.notes.append([carol.d, carol.quarter])
     carol.notes.append([carol.e, carol.quarter])

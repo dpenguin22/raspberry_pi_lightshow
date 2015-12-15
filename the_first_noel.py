@@ -82,7 +82,7 @@ def the_first_noel():
     noel.notes.append([noel.d, noel.quarter])
     noel.notes.append([noel.a, noel.quarter])
     noel.notes.append([noel.g, noel.half])
-    noel.notes.append([noel.rest, noel.eigth])
+    #noel.notes.append([noel.rest, noel.eigth])
 
     noel.size = len(noel.notes)
  
