@@ -5,6 +5,7 @@ def we_wish_you_a_merry_christmas():
 
     wish = Song(130)
 
+    wish.name = "We Wish You A Merry Christmas"
 
     wish.notes.append([wish.d, wish.quarter])
     wish.notes.append([wish.g, wish.quarter])

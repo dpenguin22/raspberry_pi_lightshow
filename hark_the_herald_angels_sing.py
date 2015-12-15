@@ -5,6 +5,7 @@ def hark_the_herald_angels_sing():
 
     hark = Song(140)
 
+    hark.name = "Hark The Herald Angels Sing"
 
     hark.notes.append([hark.g, hark.quarter])
     hark.notes.append([hark.c, hark.quarter])

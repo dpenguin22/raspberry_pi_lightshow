@@ -5,6 +5,8 @@ def carol_of_the_bells():
 
     carol = Song(140)
 
+    carol.name = "Carol Of The Bells"
+
     carol.notes.append([carol.d, carol.quarter])
     carol.notes.append([carol.e, carol.quarter])
     carol.notes.append([carol.f, carol.quarter])

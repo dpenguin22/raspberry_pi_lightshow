@@ -52,6 +52,9 @@ while(True):
 
     # Run the playlist 
     for i in range(len(playlist)):
+
+        print "Song number " + str(i) + ": " + playlist[i].name
+
         # Indicate which song in the playlist is being run
         if i <= len(outpins):
             for j in range(i):
@@ -65,7 +68,6 @@ while(True):
         time.sleep(1)
 
         # Play the song
-        #play_song(myShow, playlist[i])
         myShow.play_song(outpins, playlist[i])
 
         # Run the finale program

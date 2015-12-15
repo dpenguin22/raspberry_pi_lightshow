@@ -5,6 +5,8 @@ def o_come_all_ye_faithful():
 
     ocome = Song(140)
 
+    ocome.name = "O Come All Ye Faithful"
+
     ocome.notes.append([ocome.g, ocome.quarter])
     ocome.notes.append([ocome.g, ocome.half])
     ocome.notes.append([ocome.d, ocome.quarter])

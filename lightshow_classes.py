@@ -86,13 +86,6 @@ class Show:
 
 class Song(object):
     # Define the notes to be used
-    #c = 0
-    #d = 1
-    #e = 2
-    #f = 3
-    #g = 4
-    #a = 5
-    #b = 6
     e = 0
     f = 1
     g = 2
@@ -100,8 +93,9 @@ class Song(object):
     b = 4
     c = 5
     d = 6
-    rest = 7
+    rest = 7  # This doesn't work yet
 
+    # Define the notes in terms of beats, quarter note = 1 beat
     sixteenth = 0.25
     eigth = 0.5
     quarter = 1
@@ -111,6 +105,7 @@ class Song(object):
     def __init__(self,tempo):
         self.notes = []
         self.tempo = tempo
+        self.name = " "
         
         # Define the duration of a beat based on the tempo
         self.onebeat = 60.0 / self.tempo

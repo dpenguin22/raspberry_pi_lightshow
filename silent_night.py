@@ -5,6 +5,7 @@ def silent_night():
 
     silent = Song(100)
 
+    silent.name = "Silent Night"
 
     silent.notes.append([silent.g, silent.quarter*1.5])
     silent.notes.append([silent.a, silent.eigth])

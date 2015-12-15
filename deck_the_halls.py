@@ -5,6 +5,7 @@ def deck_the_halls():
 
     deck = Song(140)
 
+    deck.name = "Deck The Halls"
 
     deck.notes.append([deck.g, deck.quarter+deck.eigth])
     deck.notes.append([deck.f, deck.eigth])

@@ -5,6 +5,7 @@ def jingle_bells():
 
     jingle = Song(160)
 
+    jingle.name = "Jingle Bells"
 
     jingle.notes.append([jingle.a, jingle.quarter])
     jingle.notes.append([jingle.a, jingle.quarter])

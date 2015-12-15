@@ -5,6 +5,7 @@ def joy_to_the_world():
 
     joy = Song(160)
 
+    joy.name = "Joy To The World"
 
     joy.notes.append([joy.c, joy.half])
     joy.notes.append([joy.b, joy.quarter+joy.eigth])

@@ -5,6 +5,7 @@ def the_first_noel():
 
     noel = Song(100)
 
+    noel.name = "The First Noel"
 
     noel.notes.append([noel.g, noel.eigth])
     noel.notes.append([noel.f, noel.eigth])
