@@ -97,7 +97,7 @@ class Song(object):
 
     # Define the notes in terms of beats, quarter note = 1 beat
     sixteenth = 0.25
-    eigth = 0.5
+    eighth = 0.5
     quarter = 1
     half = 2
     whole = 4
